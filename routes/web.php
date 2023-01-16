@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('user.login.form');
 });
+
+
+Route::get('/user-login',[AuthController::class,'loginForm'])->name('user.login.form');
+Route::post('/user-login',[AuthController::class,'login'])->name('user.login');
