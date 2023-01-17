@@ -46,7 +46,7 @@
             <label for="amount">Amount</label>
         </div>
 
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Checkout</button>
         <p class="mt-5 mb-3 text-muted text-center">&copy; 2023-2025</p>
     </form>
 </body>

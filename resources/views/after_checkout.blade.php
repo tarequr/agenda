@@ -26,8 +26,8 @@
 
         <div class="text-center mb-4">
             <h1 class="h3 mb-3 font-weight-normal">Do you want to withdraw more money?</h1>
-            <a href="" class="btn btn-lg btn-success">Yes</a>
-            <a href="" class="btn btn-lg btn-primary">No</a>
+            <a href="{{ route('checkout.balance') }}" class="btn btn-lg btn-success">Yes</a>
+            <a href="{{ route('session.destroy') }}" class="btn btn-lg btn-primary">No</a>
         </div>
 </body>
 

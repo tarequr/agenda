@@ -40,6 +40,9 @@ class AuthController extends Controller
     public function checkoutBalance(Request $request)
     {
         if ($request->amount <= Session::get('balance')) {
+            $current_ammount = Session::get('balance') - $request->amount;
+
+            Session::put('balance', $current_ammount);
             return redirect()->route('after.checkout');
         }
 
