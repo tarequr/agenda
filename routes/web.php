@@ -21,3 +21,4 @@ Route::get('/', function () {
 
 Route::get('/user-login',[AuthController::class,'loginForm'])->name('user.login.form');
 Route::post('/user-login',[AuthController::class,'login'])->name('user.login');
+Route::get('/get-balance',[AuthController::class,'balance'])->middleware('authUser')->name('get.balance');

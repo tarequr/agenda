@@ -18,9 +18,21 @@ class AuthController extends Controller
 
         if ($validUser == 1) {
             Session::put('isLogedIn', true);
+            // return Session::get('isLogedIn');
+            return redirect()->route('get.balance');
         } else{
             Session::put('isLogedIn', false);
             return redirect()->route('user.login.form')->with(['message' => 'Invalid User']);
         }
+    }
+
+    public function balance()
+    {
+        return "20,000";
+    }
+
+    public function withdrawalForm()
+    {
+        return view('login_form');
     }
 }
