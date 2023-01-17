@@ -25,7 +25,8 @@
         @csrf
 
         <div class="text-center mb-4">
-            <h1 class="h3 mb-3 font-weight-normal">WithDrawal</h1>
+            <h1 class="h3 mb-3 font-weight-normal">WithDrawal
+            <a href="{{ route('session.destroy') }}" class="btn btn-sm btn-danger">Cancel</a></h1>
         </div>
 
         @if (Session::has('message'))
