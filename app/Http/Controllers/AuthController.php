@@ -18,8 +18,9 @@ class AuthController extends Controller
 
         if ($validUser == 1) {
             Session::put('isLogedIn', true);
-            // return Session::get('isLogedIn');
-            return redirect()->route('get.balance');
+            Session::put('balance', 50000);
+
+            return redirect()->route('withdrawal.form');
         } else{
             Session::put('isLogedIn', false);
             return redirect()->route('user.login.form')->with(['message' => 'Invalid User']);
@@ -33,6 +34,15 @@ class AuthController extends Controller
 
     public function withdrawalForm()
     {
-        return view('login_form');
+        return view('withdrawal_form');
+    }
+
+    public function checkoutBalance(Request $request)
+    {
+        if ($request->amount <= Session::get('balance')) {
+            return "OK";
+        }
+
+        return redirect()->back()->with(['message' => 'Insufficient Balance']);
     }
 }
