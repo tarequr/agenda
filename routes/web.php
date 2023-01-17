@@ -24,3 +24,5 @@ Route::post('/user-login',[AuthController::class,'login'])->name('user.login');
 // Route::get('/get-balance',[AuthController::class,'balance'])->middleware('authUser')->name('get.balance');
 Route::get('/checkout',[AuthController::class,'withdrawalForm'])->middleware('authUser')->name('withdrawal.form');
 Route::post('/checkout',[AuthController::class,'checkoutBalance'])->middleware('authUser')->name('checkout.balance');
+Route::get('/after-checkout',[AuthController::class,'afterCheckout'])->middleware('authUser')->name('after.checkout');
+Route::get('/session-destroy',[AuthController::class,'sessionDestroy'])->middleware('authUser')->name('session.destroy');

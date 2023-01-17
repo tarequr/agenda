@@ -40,9 +40,21 @@ class AuthController extends Controller
     public function checkoutBalance(Request $request)
     {
         if ($request->amount <= Session::get('balance')) {
-            return "OK";
+            return redirect()->route('after.checkout');
         }
 
         return redirect()->back()->with(['message' => 'Insufficient Balance']);
+    }
+
+    public function afterCheckout()
+    {
+        return view('after_checkout');
+    }
+
+    public function sessionDestroy()
+    {
+        Session::forget('isLogedIn');
+        Session::forget('balance');
+        return redirect()->route('user.login.form');
     }
 }
