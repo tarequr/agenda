@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class Auth extends Controller
 {
@@ -15,4 +16,9 @@ class Auth extends Controller
         }
     }
 
+    public static function logout()
+    {
+        Session::forget('isLogedIn');
+        Session::forget('balance');
+    }
 }

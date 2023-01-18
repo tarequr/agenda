@@ -44,8 +44,7 @@ class AuthController extends Controller
 
     public function sessionDestroy()
     {
-        Session::forget('isLogedIn');
-        Session::forget('balance');
+        Auth::logout();
         return redirect()->route('user.login.form');
     }
 }
