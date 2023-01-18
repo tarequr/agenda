@@ -21,13 +21,12 @@
 
 <body>
 
-    <form class="form-signin" action="{{ route('user.login') }}" method="POST">
+    <form class="form-signin" action="{{ route('checkout.balance') }}" method="POST">
         @csrf
 
         <div class="text-center mb-4">
-            <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt=""
-                width="72" height="72">
-            <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+            <h1 class="h3 mb-3 font-weight-normal">WithDrawal
+            <a href="{{ route('session.destroy') }}" class="btn btn-sm btn-danger">Cancel</a></h1>
         </div>
 
         @if (Session::has('message'))
@@ -36,24 +35,19 @@
             </div>
         @endif
 
+        @if (Session::has('balance'))
+            <div class="text-center mb-4 alert alert-success" role="alert">
+                <strong>Your current balance: {{ Session::get('balance') }}</strong>
+            </div>
+        @endif
+
         <div class="form-label-group">
-            <input type="number" id="phone" class="form-control" name="phone" placeholder="Enter phone number"
+            <input type="number" id="amount" class="form-control" name="amount" placeholder="Enter amount"
                 required autofocus>
-            <label for="phone">Phone</label>
+            <label for="amount">Amount</label>
         </div>
 
-        <div class="form-label-group">
-            <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Enter password"
-                required>
-            <label for="inputPassword">Password</label>
-        </div>
-
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" value="remember-me"> Remember me
-            </label>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Checkout</button>
         <p class="mt-5 mb-3 text-muted text-center">&copy; 2023-2025</p>
     </form>
 </body>
