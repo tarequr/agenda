@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class BalanceCheckMiddleware
 {
@@ -16,6 +17,13 @@ class BalanceCheckMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        if ($request->amount <= Session::get('balance')) {
+            $current_ammount = Session::get('balance') - $request->amount;
+
+            Session::put('balance', $current_ammount);
+            return $next($request);
+        }
+
+        return redirect()->back()->with(['message' => 'Insufficient Balance']);
     }
 }
