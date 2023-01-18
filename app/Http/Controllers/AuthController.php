@@ -27,11 +27,6 @@ class AuthController extends Controller
         }
     }
 
-    // public function balance()
-    // {
-    //     return "20,000";
-    // }
-
     public function withdrawalForm()
     {
         return view('withdrawal_form');
@@ -39,14 +34,6 @@ class AuthController extends Controller
 
     public function checkoutBalance(Request $request)
     {
-        // if ($request->amount <= Session::get('balance')) {
-        //     $current_ammount = Session::get('balance') - $request->amount;
-
-        //     Session::put('balance', $current_ammount);
-        //     return redirect()->route('after.checkout');
-        // }
-
-        // return redirect()->back()->with(['message' => 'Insufficient Balance']);
         return redirect()->route('after.checkout');
     }
 
